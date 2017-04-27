@@ -31,7 +31,7 @@ module Spree
           i << hsh
         end
         i
-      end
-    end
+      end 
+    end if defined?(ShipmentSerializer)
   end
 end
