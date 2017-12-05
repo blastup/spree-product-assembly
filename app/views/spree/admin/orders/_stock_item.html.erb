@@ -19,9 +19,11 @@
 
     <td class="item-qty-show text-center">
       <% item.states.each do |state,count| %>
-        <%= count %> x <%= Spree.t(state).downcase %>
+        <%= count %>
       <% end %>
     </td>
+
+    <td class="line-item-total text-center"><%= item.variant.box_items_count %></td>
 
     <% unless shipment.shipped? %>
       <td class="item-qty-edit is-hidden">
