@@ -28,11 +28,11 @@
               <%= "(" + variant_options(item.variant) + ")" if item.variant.option_values.any? %>
             </td>
             <% if !hide_prices %>
-              <td class="item-price align-center">
+              <td class="item-price text-center">
                 <%= item.single_money.to_html %>
               </td>
             <% end %>
-            <td class="line-item-qty-show align-center">
+            <td class="line-item-qty-show text-center">
               <%= item.quantity %>
             </td>
 
@@ -45,7 +45,7 @@
             </td>
 
             <% if !hide_prices %>
-              <td class="item-total align-center">
+              <td class="item-total text-center">
                 <%= item.display_amount.to_html %>
               </td>
             <% end %>
