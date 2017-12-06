@@ -12,7 +12,7 @@
           <th><%= Spree.t(:price) %></th>
         <% end %>
         <th><%= Spree.t(:quantity) %></th>
-        <th class="text-center"><%= Spree.t(:quantity_in_box) %></th>
+        <th class="text-center"><%= Spree.t(:pieces) %></th>
         <% if !hide_prices %>
           <th><%= Spree.t(:total) %></th>
         <% end %>
@@ -41,7 +41,7 @@
             </td>
 
             <td class="item-qty-show text-center">
-                <%= item.variant.box_items_count %>
+                <%= item.variant.box_items_count * item.quantity %>
             </td>
 
             <% if !hide_prices %>
