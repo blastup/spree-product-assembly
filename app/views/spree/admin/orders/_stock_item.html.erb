@@ -18,9 +18,7 @@
     <td class="item-price text-center"><%= item.line_item.single_money.to_html %></td>
 
     <td class="item-qty-show text-center">
-      <% item.states.each do |state,count| %>
-        <%= count %>
-      <% end %>
+      <%= item.line_item.quantity %>
     </td>
 
     <% unless shipment.shipped? %>
