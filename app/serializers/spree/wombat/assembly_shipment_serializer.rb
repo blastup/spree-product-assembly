@@ -33,7 +33,8 @@ if defined?(Spree::Wombat)
           end
           i
         end
-      end
-    end
+        i
+      end 
+    end if defined?(ShipmentSerializer)
   end
 end

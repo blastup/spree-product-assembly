@@ -39,31 +39,3 @@
     <% end %>
   </td>
 </tr>
-
-<tr class="edit-tracking is-hidden total">
-  <td colspan="5">
-    <label><%= Spree.t(:tracking_number) %>:</label>
-    <%= text_field_tag :tracking, shipment.tracking, class: 'form-control' %>
-  </td>
-  <td class="actions">
-    <% if can? :update, shipment %>
-      <%= link_to_with_icon 'save', Spree.t('actions.save'), '#', :class => 'save-tracking btn btn-success btn-sm', :no_text => true, :data => {'shipment-number' => shipment.number, :action => 'save'}, :title => Spree.t('actions.save') %>
-      <%= link_to_with_icon 'cancel', Spree.t('actions.cancel'), '#', :class => 'cancel-tracking btn btn-default btn-sm', :no_text => true, :data => {:action => 'cancel'}, :title => Spree.t('actions.cancel') %>
-    <% end %>
-  </td>
-</tr>
-
-<tr class="show-tracking total">
-  <td colspan="5">
-    <% if shipment.tracking.present? %>
-      <strong><%= Spree.t(:tracking) %>:</strong> <%= shipment.tracking %>
-    <% else %>
-      <%= Spree.t(:no_tracking_present) %>
-    <% end %>
-  </td>
-  <td class="actions">
-    <% if can? :update, shipment %>
-      <%= link_to_with_icon 'edit', Spree.t('actions.save'), '#', :class => 'edit-tracking btn btn-primary btn-sm', :no_text => true, :data => {:action => 'edit'}, :title => Spree.t('edit') %>
-    <% end %>
-  </td>
-</tr>

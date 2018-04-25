@@ -8,9 +8,14 @@
     <table class="table table-bordered product-bundles" data-hook="">
       <thead>
         <th colspan="2"><%= Spree.t(:item_description) %></th>
-        <th><%= Spree.t(:price) %></th>
+        <% if !hide_prices %>
+          <th><%= Spree.t(:price) %></th>
+        <% end %>
         <th><%= Spree.t(:quantity) %></th>
-        <th><%= Spree.t(:total) %></th>
+        <th class="text-center"><%= Spree.t(:pieces) %></th>
+        <% if !hide_prices %>
+          <th><%= Spree.t(:total) %></th>
+        <% end %>
         <th class="orders-actions actions" data-hook="admin_order_form_line_items_header_actions"></th>
       </thead>
 
@@ -22,10 +27,12 @@
               <%= item.product.name %> - <%= item.variant.sku %> <br />
               <%= "(" + variant_options(item.variant) + ")" if item.variant.option_values.any? %>
             </td>
-            <td class="item-price align-center">
-              <%= item.single_money.to_html %>
-            </td>
-            <td class="line-item-qty-show align-center">
+            <% if !hide_prices %>
+              <td class="item-price text-center">
+                <%= item.single_money.to_html %>
+              </td>
+            <% end %>
+            <td class="line-item-qty-show text-center">
               <%= item.quantity %>
             </td>
 
@@ -33,9 +40,15 @@
               <%= number_field_tag :quantity, item.quantity, :min => 0, :class => "form-control line_item_quantity", :size => 5 %>
             </td>
 
-            <td class="item-total align-center">
-              <%= item.display_amount.to_html %>
+            <td class="item-qty-show text-center">
+                <%= item.variant.box_items_count * item.quantity %>
             </td>
+
+            <% if !hide_prices %>
+              <td class="item-total text-center">
+                <%= item.display_amount.to_html %>
+              </td>
+            <% end %>
             <td class="cart-item-delete actions" data-hook="cart_item_delete">
               <% unless item.any_units_shipped? %>
                 <% if can? :update, item %>
